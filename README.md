@@ -1,4 +1,4 @@
-RelayVideoStreamThe server designed for retransmission of video channels is characterized by low memory consumption.
+The server designed for retransmission of video channels is characterized by low memory consumption.
 
 In total, about 160 kilobytes of memory is used to cache the video stream
 

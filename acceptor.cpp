@@ -71,7 +71,7 @@ void acceptor_process(SOCKET listener)
   }
 
 
-    //клиенты
+    //РєР»РёРµРЅС‚С‹
   for (i = 0; i < acceptor_client_sockets_cnt; i++)
   {
     sock = acceptor_client_sockets[i];

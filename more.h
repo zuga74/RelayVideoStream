@@ -5,7 +5,7 @@
 
 void Dbg(const char * Format, ...);
 
-//ïîèñê â óêàçàííîé îáëàñòè ïàìÿòè p, áëîêà ïàìÿòè s
+//Ğ¿Ğ¾Ğ¸ÑĞº Ğ² ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ½Ğ¾Ğ¹ Ğ¾Ğ±Ğ»Ğ°ÑÑ‚Ğ¸ Ğ¿Ğ°Ğ¼ÑÑ‚Ğ¸ p, Ğ±Ğ»Ğ¾ĞºĞ° Ğ¿Ğ°Ğ¼ÑÑ‚Ğ¸ s
 char * memsearch(const char * p, unsigned long plen, const char * s, unsigned long slen);
 
 /**
@@ -43,7 +43,7 @@ int parse_http_header(char * buf, int len, PPARSE_HTTP_HEADER pheader);
 
 bool parse_url(char * url, char * sheme, char * host, char * path, unsigned short * port);
 
-//èç addr->s_addr ò.å. www.ya.ru->u_int
+//Ğ¸Ğ· addr->s_addr Ñ‚.Ğµ. www.ya.ru->u_int
 bool get_s_addr( char *addr, unsigned long *ps_addr );
 
 

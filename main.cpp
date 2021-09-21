@@ -103,7 +103,7 @@ THREAD_FUNCTION(OutThread)
         rc = recv(sock, buf, MAX_PACKET_SIZE, MSG_PEEK);
         if (rc <= 0) {
           Dbg("Relay2: Out disconnect sock=%d\r\n", sock);
-          break;   //отсоединен
+          break;   //РѕС‚СЃРѕРµРґРёРЅРµРЅ
         }
       }
       if (FD_ISSET(sock, &writeset)) {
@@ -113,11 +113,11 @@ THREAD_FUNCTION(OutThread)
     }
 
 
-    len = ringbuf_get(num, buf, MAX_PACKET_SIZE); //ищем необходимый пакет с номером num
+    len = ringbuf_get(num, buf, MAX_PACKET_SIZE); //РёС‰РµРј РЅРµРѕР±С…РѕРґРёРјС‹Р№ РїР°РєРµС‚ СЃ РЅРѕРјРµСЂРѕРј num
     if (len <= 0) {
       next_num = ringbuf_get_next_num(num);
-      if (next_num == RINGBUF_MAX_NUM) { SLEEP(10); continue; }  //новых покетов пока нет
-      len = ringbuf_get(next_num, buf, MAX_PACKET_SIZE); //ищем необходимый пакет с номером num
+      if (next_num == RINGBUF_MAX_NUM) { SLEEP(10); continue; }  //РЅРѕРІС‹С… РїРѕРєРµС‚РѕРІ РїРѕРєР° РЅРµС‚
+      len = ringbuf_get(next_num, buf, MAX_PACKET_SIZE); //РёС‰РµРј РЅРµРѕР±С…РѕРґРёРјС‹Р№ РїР°РєРµС‚ СЃ РЅРѕРјРµСЂРѕРј num
       num = next_num;
       if (len <= 0) {
         continue;
@@ -135,7 +135,7 @@ THREAD_FUNCTION(OutThread)
     //printf("O:%d:%d\r\n", sock, (int)num);
 
     num++;
-    //SLEEP(1);  //мешает не нужен
+    //SLEEP(1);  //РјРµС€Р°РµС‚ РЅРµ РЅСѓР¶РµРЅ
   }
 
   CLOSESOCKET(sock);
@@ -248,11 +248,11 @@ int main(int argc, char* argv[])
 #ifndef _WIN32
   struct sigaction sa;
   sigset_t newset;
-  sigemptyset(&newset);   // чистимся
-  sigaddset(&newset, SIGHUP);  // добавляем сигнал SIGHUP
-  sigprocmask(SIG_BLOCK, &newset, 0);   // блокируем его
-  sa.sa_handler = signal_handler;  // указываем обработчик
-  sigaction(SIGTERM, &sa, 0);    // обрабатываем сигнал SIGTERM
+  sigemptyset(&newset);   // С‡РёСЃС‚РёРјСЃСЏ
+  sigaddset(&newset, SIGHUP);  // РґРѕР±Р°РІР»СЏРµРј СЃРёРіРЅР°Р» SIGHUP
+  sigprocmask(SIG_BLOCK, &newset, 0);   // Р±Р»РѕРєРёСЂСѓРµРј РµРіРѕ
+  sa.sa_handler = signal_handler;  // СѓРєР°Р·С‹РІР°РµРј РѕР±СЂР°Р±РѕС‚С‡РёРє
+  sigaction(SIGTERM, &sa, 0);    // РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃРёРіРЅР°Р» SIGTERM
 #endif
 
   ringbuf_zero();
@@ -277,7 +277,7 @@ int main(int argc, char* argv[])
       if (out_thread_cnt > 0) time_to_terminated = time(NULL);
       else if (time(NULL) - time_to_terminated > no_client_timeout_sec) {
         Dbg("Relay2: Clients no more time - terminited\r\n");
-        break; //если клиентов нет больше no_client_timeout_sec
+        break; //РµСЃР»Рё РєР»РёРµРЅС‚РѕРІ РЅРµС‚ Р±РѕР»СЊС€Рµ no_client_timeout_sec
       }
     }
   }

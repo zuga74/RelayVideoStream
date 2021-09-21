@@ -16,7 +16,7 @@ void Dbg(const char * Format, ...)
 }
 
 
-//поиск в указанной области памяти p, блока памяти s
+//РїРѕРёСЃРє РІ СѓРєР°Р·Р°РЅРЅРѕР№ РѕР±Р»Р°СЃС‚Рё РїР°РјСЏС‚Рё p, Р±Р»РѕРєР° РїР°РјСЏС‚Рё s
 char * memsearch(const char * p, unsigned long plen, const char * s, unsigned long slen)
 {
   char * cp = (char *)p;
@@ -218,7 +218,7 @@ bool parse_url(char * url, char * sheme, char * host, char * path, unsigned shor
   return true;
 }
 
-//из addr->s_addr т.е. www.ya.ru->u_int
+//РёР· addr->s_addr С‚.Рµ. www.ya.ru->u_int
 bool get_s_addr( char *addr, unsigned long *ps_addr )
 {
   struct hostent *hp;
@@ -263,7 +263,7 @@ SOCKET socket_create_and_connect(char * host, unsigned short port)
   addr.sin_family = AF_INET;
   addr.sin_port = htons(port);
 
-  if (SOCKET_ERROR == connect(sock, (sockaddr*)&addr, sizeof(addr)) ) //Конектимся к требуемому адресу
+  if (SOCKET_ERROR == connect(sock, (sockaddr*)&addr, sizeof(addr)) ) //РљРѕРЅРµРєС‚РёРјСЃСЏ Рє С‚СЂРµР±СѓРµРјРѕРјСѓ Р°РґСЂРµСЃСѓ
   {
     CLOSESOCKET(sock);
     return SOCKET_ERROR;
